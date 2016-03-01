@@ -1,8 +1,13 @@
-# Npm::Rails
+# npm-rails
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/npm/rails`. To experiment with that code, run `bin/console` for an interactive prompt.
+NPM support for Rails projects. It let you use Bundler-like DSL and rake tasks
+for including npm packages. This gem based on Browserify for bundling packages
+and resolve dependencies.
 
-TODO: Delete this and the text above, and describe your gem
+**requirement**
+
+* [node](http://nodejs.org)
+* [browserify](http://browserify.org/)
 
 ## Installation
 
@@ -12,28 +17,42 @@ Add this line to your application's Gemfile:
 gem 'npm-rails'
 ```
 
-And then execute:
+Then run:
 
-    $ bundle
+    rails g npm_rails:initialize
 
-Or install it yourself as:
+And require `npm-dependencies.js`:
 
-    $ gem install npm-rails
+    //=require npm-dependencies
 
 ## Usage
 
-TODO: Write usage instructions here
+1. Add a package to `npm_packages` file
+2. Run `rake npm:install`
+3. Use the package in your javascript code by calling the camelize name
+or `build_name` if you set it
 
-## Development
+**Example `npm_packages` file**
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
+```ruby
+# call 'React' in your js code to use it
+npm 'react'
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+# Set version
+npm 'redux', '3.3.1'
 
-## Contributing
+# Set build_name to a package.
+# Call '_' to get Underscore
+npm 'underscore', build_name: '_'
 
-1. Fork it ( https://github.com/[my-github-username]/npm-rails/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+# You can add a package for development
+npm 'jasmine', development: true
+
+# Or in block
+development do
+  npm 'jasmine'
+end
+
+# Install a package but do not require it
+npm 'browserify', require: false
+```
