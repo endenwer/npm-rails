@@ -19,7 +19,7 @@ module Npm
         Dir.mkdir("tmp/npm-rails") unless File.exist?("tmp/npm-rails")
         File.open(bundle_file_path, "w") do |file|
           packages_for_bundle_file.each do |package|
-            file.write "window.#{ package.build_name } = require('#{ package.name }')"
+            file.write "window.#{ package.build_name } = require('#{ package.name }')\n"
           end
         end
         bundle_file_path
