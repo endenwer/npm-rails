@@ -1,3 +1,5 @@
-# A sample package_file
+# Browserify is required.
+# You can install it globally and delete from here.
+npm 'browserify', require: false, development: true
 
-# npm 'react'
+# Add some npm packages
