@@ -25,7 +25,7 @@ module Npm
       private
 
       def create_build_name_from_name
-        @name.gsub("-", "_").camelize
+        @name.tr("-", "_").camelize
       end
     end
   end
