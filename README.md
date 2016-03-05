@@ -1,8 +1,10 @@
 # npm-rails
+
 [![Gem Version](https://badge.fury.io/rb/npm-rails.svg)](https://badge.fury.io/rb/npm-rails)
 [![Code Climate](https://codeclimate.com/github/endenwer/npm-rails/badges/gpa.svg)](https://codeclimate.com/github/endenwer/npm-rails)
 [![Dependency Status](https://gemnasium.com/endenwer/npm-rails.svg)](https://gemnasium.com/endenwer/npm-rails)
 [![Build Status](https://travis-ci.org/endenwer/npm-rails.svg?branch=master)](https://travis-ci.org/endenwer/npm-rails)
+[![Coverage Status](https://coveralls.io/repos/github/endenwer/npm-rails/badge.svg?branch=master)](https://coveralls.io/github/endenwer/npm-rails?branch=master)
 
 NPM support for Rails projects. It let you use Bundler-like DSL and rake tasks
 for including npm packages. This gem based on Browserify for bundling packages
