@@ -21,7 +21,7 @@ namespace :npm do
       end
 
       if Rails.env.production?
-        browserify_comamnd = "NODE_ENV=production #{ browserify } #{ browserify_options } #{ bundle_file_path } > #{ output_file_path }"
+        browserify_command = "NODE_ENV=production #{ browserify } #{ browserify_options } #{ bundle_file_path } > #{ output_file_path }"
       else
         browserify_command = "#{ browserify } #{ browserify_options } #{ bundle_file_path } > #{ output_file_path }"
       end
