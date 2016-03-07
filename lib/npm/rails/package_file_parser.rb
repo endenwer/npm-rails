@@ -24,7 +24,7 @@ module Npm
 
       def npm(package_name, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        options.merge!(development: @development)
+        options = { development: @development }.merge(options)
         version = args.empty? ? "latest" : args.pop
 
         @packages << Npm::Rails::Package.new(package_name, version, options)
