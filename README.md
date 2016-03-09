@@ -6,6 +6,8 @@
 [![Build Status](https://travis-ci.org/endenwer/npm-rails.svg?branch=master)](https://travis-ci.org/endenwer/npm-rails)
 [![Coverage Status](https://coveralls.io/repos/github/endenwer/npm-rails/badge.svg?branch=master)](https://coveralls.io/github/endenwer/npm-rails?branch=master)
 
+**Note: It is not production ready yet, but will be very soon.**
+
 NPM support for Rails projects. It let you use Bundler-like DSL and rake tasks
 for including npm packages. This gem based on Browserify for bundling packages
 and resolve dependencies.
