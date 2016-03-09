@@ -12,7 +12,6 @@ module NpmRails
         <<-EOF.strip_heredoc
         # Added by npm-rails
         /node_modules
-        /vendor/assets/javascripts/npm-dependencies.js
         EOF
       end
     end
