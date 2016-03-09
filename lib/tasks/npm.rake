@@ -26,4 +26,6 @@ namespace :npm do
   end
 end
 
-task "assets:precompile" => ["npm:install"]
+if ::Rails.configuration.npm.run_before_assets_precompile
+  task "assets:precompile" => ["npm:install"]
+end

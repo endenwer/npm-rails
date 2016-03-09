@@ -6,6 +6,7 @@ module Npm
     class Railtie < ::Rails::Railtie
       config.npm = ActiveSupport::OrderedOptions.new
       config.npm.package_file = "npm_packages"
+      config.npm.run_before_assets_precompile = false
 
       output_path = "vendor/assets/javascripts/npm-rails"
       if ::Rails.env.production?
