@@ -6,8 +6,6 @@
 [![Build Status](https://travis-ci.org/endenwer/npm-rails.svg?branch=master)](https://travis-ci.org/endenwer/npm-rails)
 [![Coverage Status](https://coveralls.io/repos/github/endenwer/npm-rails/badge.svg?branch=master)](https://coveralls.io/github/endenwer/npm-rails?branch=master)
 
-**Note: It is not production ready yet, but will be very soon.**
-
 NPM support for Rails projects. It let you use Bundler-like DSL and rake tasks
 for including npm packages. This gem based on Browserify for bundling packages
 and resolve dependencies.
@@ -65,15 +63,15 @@ npm 'browserify', require: false
 The following options are available for configuration in your application or environment-level
 config files (`config/application.rb`, `config/environments/development.rb`, etc.):
 
-| Configuration Option            | Description                                                                                                                                  |
-|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------- |
-| `config.npm.package_file`       | Specificies a package file. Default value: `npm_packages`                                                                                    |
-| `config.npm.output_file`        | Specifies a file where to bundle npm packages. Default value: `vendor/assets/javascripts/npm-dependencies.js`.                               |
-| `config.npm.browserify_options` | Sets options for browserify command. See all available options in [Browserify documentation](https://github.com/substack/node-browserify#usage) |
+| Configuration Option                      | Description                                                                                                                                  |
+|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------- |
+| `config.npm.package_file`                 | Specificies a package file. Default value: `npm_packages`                                                                                    |
+| `config.npm.output_file`                  | Specifies a file where to bundle npm packages. Default value for production: `vendor/assets/javascripts/npm-rails/production/npm-dependencies.js`. Default value for other environments: `vendor/assets/javascripts/npm-rails/development/npm-dependencies.js`                               |
+| `config.npm.browserify_options`           | Sets options for browserify command. See all available options in [Browserify documentation](https://github.com/substack/node-browserify#usage) |
+| `config.npm.run_berofe_assets_precompile` | If set to `true` then run `rake npm:install` before assets precompilation. Default value: `false` |
 
 ## How it works
 
-The generator creates `npm_packages` file. This file contains a list of packages. Rake uses NPM to install the packages and Browserify to bundle them and output the bundled results to `vendor/assets/javascripts/npm-dependencies.js`, which are then loaded by sprockets. These generated bundle file have been added to your `.gitignore` for your convenience. All packages attached to `window`.
-
+The generator creates `npm_packages` file. This file contains a list of packages. Rake uses NPM to install the packages and Browserify to bundle them. Browserify output the bundled results to `output_file`(see configuration options), which are then loaded by sprockets. All packages attached to `window` by `build_name`, which by default is the camelize package name.
 
 
