@@ -68,7 +68,7 @@ config files (`config/application.rb`, `config/environments/development.rb`, etc
 | `config.npm.package_file`                 | Specificies a package file. Default value: `npm_packages`                                                                                    |
 | `config.npm.output_file`                  | Specifies a file where to bundle npm packages. Default value for production: `vendor/assets/javascripts/npm-rails/production/npm-dependencies.js`. Default value for other environments: `vendor/assets/javascripts/npm-rails/development/npm-dependencies.js`                               |
 | `config.npm.browserify_options`           | Sets options for browserify command. See all available options in [Browserify documentation](https://github.com/substack/node-browserify#usage) |
-| `config.npm.run_berofe_assets_precompile` | If set to `true` then run `rake npm:install` before assets precompilation. Default value: `false` |
+| `config.npm.run_before_assets_precompile` | If set to `true` then run `rake npm:install` before assets precompilation. Default value: `false` |
 
 ## How it works
 
