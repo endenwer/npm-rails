@@ -12,8 +12,7 @@ namespace :npm do
     Npm::Rails::TaskHelpers.create_file(output_path, output_file) unless File.exist?(output_file_path)
 
     Npm::Rails::PackageBundler.bundle(::Rails.root, package_file, ::Rails.env) do |packages, bundle_file_path|
-      sh "cd #{ ::Rails.root }"
-      sh "npm install --loglevel error #{ packages }"
+      sh "npm install --prefix #{ ::Rails.root } --loglevel error #{ packages }"
 
       browserify = Npm::Rails::TaskHelpers.find_browserify(::Rails.root.join("node_modules"))
       browserify_command = "#{ browserify } #{ browserify_options } #{ bundle_file_path } > #{ output_file_path }"
